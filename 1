@@ -1,0 +1,219 @@
+Rails for rockstars only
+
+You won't  stop rocking.
+
+Programming/Coding
+
+
+Install
+-------
+
+*This step is for linux mint only*
+
+**$ sudo pluma /etc/apt/sources.list**
+
+**Comment the last line with the character #**
+
+*Install curl*
+
+**$ sudo apt-get install curl**
+
+*I don't know what is this for*
+
+**$ command curl -sSL https://rvm.io/mpapis.asc | gpg --import -**
+
+*Install rails*
+
+**$ curl -sSL https://get.rvm.io | bash -s stable --rails**
+
+
+Create a project
+----------------
+
+https://www.youtube.com/v/3Pbsw5jC4PI
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Open the following link in your browser*
+
+**localhost:3000**
+
+
+Scaffolds
+---------
+
+https://www.youtube.com/v/Ns4yKfgJQDM
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Create the scaffold*
+
+**$ rails generate scaffold MyScaffold my\_string:string my\_integer:integer my\_datetime:datetime my\_boolean:boolean**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Open the following link in your browser*
+
+**localhost:3000/my_scaffolds**
+
+
+Views
+-----
+
+https://www.youtube.com/v/jdD80H-j0T0
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Create the scaffold*
+
+**$ rails generate scaffold Message user:string message_text:text**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Go to app/views/messages/index.html and add*
+
+    <h1>This is a test</h1>
+    <% for i in 0..10 %>
+      <% if Message.find_by_user("ejemplo") %>
+        <%= Message.find_by_user("ejemplo").message_text %>
+      <% end %>
+    <% end%>
+
+*Open the following link in your browser*
+
+**localhost:3000/messages**
+
+
+Controllers
+-----------
+
+https://www.youtube.com/v/rvRCDLdaD_0
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Create the scaffold*
+
+**$ rails generate scaffold Message user:string message\_text:text**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Go to app/controllers/messages\_controllers.rb and add the line 28*
+
+    @message.message_text="Changed the message text"
+
+*Replace the line 32*
+
+    format.html { redirect_to @message, notice: 'Changes were made in the controller'. }
+
+*Open the following link in your browser*
+
+**localhost:3000/messages**
+
+
+Models
+------
+
+https://www.youtube.com/v/rvRCDLdaD_0
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Create the scaffold*
+
+**$ rails generate scaffold Message user:string message_text:text**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Go to app/models/message.rb and replace it*
+
+    class Message < ActiveRecord::Base
+      def myModelFunction
+        return user + " says \"" + message_text + "\""
+      end
+    end
+
+*Go to app/views/message/index.html.erb and add the line 19*
+
+    <td><%= message.myModelFunction %></td>
+
+
+*Open the following link in your browser*
+
+**localhost:3000/messages**

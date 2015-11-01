@@ -1,0 +1,245 @@
+Rails topping
+
+Programming coding
+
+public/
+-------
+https://www.youtube.com/v/Y4SO_qQ7jao
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Create a new file: public/test.html and add the following*
+
+    <h1>Example</h1>
+    <p>This is plain html</p>
+
+*Open the following link in your browser*
+
+**localhost:3000/test.html**
+
+
+Helpers
+-------
+https://www.youtube.com/v/u6KpBsUDzCk
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Now let's create a controller*
+
+**$ rails generate scaffold Test my_string:string**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Edit app/helpers/tests_helper.rb*
+
+    module TestHelpler
+      def myHelperFunction
+        var = Test.count
+        return var
+      end
+    end
+
+*Edit app/views/tests/index.html.erb*
+
+    <p>My Function: <%=myHelperFunction%></p>
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Open the following link in your browser*
+
+**localhost:3000/tests**
+
+
+Console
+-------
+https://www.youtube.com/v/0Aaunp2o2Vk
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Generate a scaffold*
+
+**$ rails generate scaffold MyScaffold my_string:string**
+
+*Create the database tables*
+
+**$ rake db:migrate**
+
+*Open the console*
+
+**$ rails console**
+
+*Create a new MyScaffold*
+
+**> s = MyScaffold.new**
+
+*Edit the field named my_string*
+
+**> s.my_string="example"**
+
+*Save it into the database*
+
+**>  s.save**
+
+*Exit the console*
+
+**> exit**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Open the following link in your browser*
+
+*localhost:3000/my_scaffolds*
+
+
+Database
+--------
+https://www.youtube.com/v/LYc_7h76Htc
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Generate a scaffold*
+
+**$ rails generate scaffold MyScaffold my_string:string**
+
+*Create the database tables*
+
+**rake db:migrate**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+**Create a new register in your browser**
+
+**localhost:3000/my_scaffolds**
+
+*cd into db/*
+
+**$ cd db**
+
+*Open the sqlite database*
+
+**sqlite3 development.sqlite3**
+
+*Check all the registers*
+
+**sqlite> select * from my_scaffolds;**
+
+*Edit them*
+
+**sqlite> update my_scaffolds set my_string="changed";**
+
+*Exit sqlite*
+
+**sqlite> .quit**
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+
+Relations
+---------
+
+https://www.youtube.com/v/2nHtQEzRG8g
+
+*Initialize the rvm (if you are using it)*
+
+**$ source ~/.rvm/bin/rvm**
+
+*Create the app*
+
+**$ rails new MyApp**
+
+*Cd into it*
+
+**$ cd MyApp**
+
+*Create two scaffolds*
+
+**$ rails generate scaffold User name:string**
+
+**$ rails generate scaffold Post user_id:integer message:string
+rake db:migrate**
+
+*Edit app/models/post.rb*
+    class Post < ActiveRecord::Base
+      belongs_to :user
+    end
+
+*Edit app/models/user.rb*
+    class User < ActiveRecord::Base
+      has_many :posts
+    end
+
+*Add into app/views/users/show.html.erb*
+
+    <%= @users.posts.each do |post| %>
+      <%=post.message%>
+    <% end %>
+
+*Initialize the server (you can use "$ rails server" instead)*
+
+**$ rails s**
+
+*Create new users in your browser*
+
+**localhost:3000/users**
+
+*Create new posts in your browser*
+
+**localhost:3000/posts**
+
+*Show users in your browser*
+
+**localhost:3000/users**
